@@ -5,20 +5,21 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Like;
 use Auth;
 
 class PostController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('auth',['except'=>['index']]);
+        $this->middleware('auth',['except'=>['index','show']]);
     }
 
 
 
     public function index(){
 
-        $posts= Post::orderBy('created_at','asc')->get();
+        $posts= Post::orderBy('created_at','desc')->get();
         return view('posts.index', compact('posts'));
     }
 
@@ -71,14 +72,21 @@ class PostController extends Controller
         return redirect()->route('index')->with('status','Post edited');
     }
 
+    public function show($id){
+        $post=Post::findOrFail($id);
+        return view('posts.show', compact('post'));
+    }
 
-
-
-
-
-
-
-
+    public function destroy($id){
+        if (Auth::user()->is_admin){
+            $post=Post::findOrFail($id);
+            $likes=Like::where('post_id', '=',$post->id)->delete();
+            $post->delete();
+            return redirect()->route('index')->with('status','Post deleted');
+        } 
+        
+        return abort(403,"Only admins may delete Posts");
+    }
 
 
 }

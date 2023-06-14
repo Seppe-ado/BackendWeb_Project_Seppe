@@ -5,16 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Posts</div>
+                <div class="card-header">Welcome to the site! Thank you for registering</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                
 
-                    //posts to be put
+                    
                 </div>
             </div>
         </div>
