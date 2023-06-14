@@ -24,8 +24,8 @@
                     Base location sharing
                 </a>
 
-                @auth
-                <a href="/">
+                @auth 
+                <a href="{{route('posts.create')}}">
                     New Post
 
                 </a>@endauth

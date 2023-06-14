@@ -18,6 +18,22 @@
                         <h5>{{ $post->title}}</h5>
                         <p>{{$post->text}}</p>
                         <p>Posted by {{$post->user->name}} at {{$post->created_at->format('d/m/Y \a\t H:m')}} </p>
+                        @auth
+                        @if ($post->user_id==Auth::user()->id)
+                         <a href="{{route('posts.edit',$post->id)}}">Edit Post </a>
+                        @endif  
+                        <br>
+                        @foreach($post->likes as $like)
+                        @if ($like->user_id ==Auth::user()->id)
+                        <a href="{{route('like' , $post->id )}}"> Unlike post </a>
+                        <br>
+                        @else
+                            <a href="{{route('like' , $post->id )}}"> Like post </a>
+                        <br>
+                        @endif
+                        @endforeach
+                        @endauth
+                        Post has {{ $post->likes()->count() }} like(s)
                         <hr>
                     @endforeach
 
