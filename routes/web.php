@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NewsLikesController;
 
 
 /*
@@ -22,7 +24,9 @@ Route::get('/', [PostController::class,'index'])->name('index');
 Route::resource('posts', PostController::class);
 Route::resource('news', NewsController::class);
 
+
 Route::get('like/{postid}', [LikeController::class, 'like'])->name('like');
+Route::get('Newslike/{postid}', [NewsLikesController::class, 'Newslike'])->name('Newslike');
 
 
 Route::get('user/{name}', [UserController::class,'user'])->name('user');

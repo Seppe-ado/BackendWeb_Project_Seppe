@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('news_likes', function (Blueprint $table) {
             $table->id();
-            $table->integer('news_post_id');
+            $table->integer('news_id');
             $table->integer('user_id');
             $table->timestamps();
         });

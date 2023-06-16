@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('text');
             $table->integer('user_id');
-            $table->integer('news_post_id');
+            $table->integer('news_id');
             $table->timestamps();
         });
     }
