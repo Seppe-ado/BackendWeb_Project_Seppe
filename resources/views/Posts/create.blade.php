@@ -25,7 +25,8 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="title" class="col-md-4 col-form-label text-md-end">Content</label>
+                            <label for="title" class="col-md-4 col-form-label text-md-end">Content: <br> Do not forget to give base coordinates</label>
+                            
 
                             <div class="col-md-6">
                                 <textarea name='text' required> {{old('content')}}</textarea>

@@ -21,7 +21,7 @@ class NewsController extends Controller
         return view('news.newsindex', compact('news'));
     }
     public function create(){
-        return view('News.Newscreate');
+        return view('admin.Newscreate');
     }
     public function store(Request $request){
 
@@ -37,7 +37,7 @@ class NewsController extends Controller
         $news->user_id=Auth::user()->id;
         if (Auth::user()->is_admin){
         $news->save();
-        return redirect()->route('Newsindex')->with('status','News added');
+        return redirect()->route('adminnews')->with('status','News added');
 
         } else {
             return abort(403,"Only admins may add News");
@@ -62,7 +62,7 @@ class NewsController extends Controller
             $news=News::findOrFail($id);
             $newslikes=NewsLike::where('news_id', '=',$news->id)->delete();
             $news->delete();
-            return redirect()->route('Newsindex')->with('status','News deleted');
+            return redirect()->route('adminnews')->with('status','News deleted');
         } 
         
         return abort(403,"Only admins may delete News");
@@ -84,5 +84,10 @@ class NewsController extends Controller
 
 
         return redirect()->route('Newsindex')->with('status','News edited');
+    }
+    public function Adminnews(){
+
+        $news= News::orderBy('created_at','desc')->get();
+        return view('admin.news', compact('news'));
     }
 }

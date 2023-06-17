@@ -25,16 +25,6 @@
                         Post has {{ $news->news_likes()->count() }} like(s)
                         
 
-                    @auth
-                    @if (Auth::user()->is_admin)
-                        <br><br><br><br><br><br>
-                        <form method="post" action="{{route('news.destroy', $news->id)}}" >
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" value="DELETE POST" style= "background-color: red;" onclick="return confirm('Are you sure you want to delete?')">
-                        </form>
-                    @endif
-                    @endauth
                 </div>
             </div>
         </div>

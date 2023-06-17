@@ -17,35 +17,39 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+@auth
+                @if (Auth::user()->is_admin)
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Base location sharing
+                <a class="navbar-brand" href="{{ url('/admins') }}">
+                    Current Admins
                 </a>
 
                 @auth 
-                <a class="navbar-brand" href="{{route('posts.create')}}">
-                    New Post
+                <a class="navbar-brand" href="{{route('Adminindex')}}">
+                    Check posts
 
                 </a>@endauth
-                <a class="navbar-brand" href="{{url('/news')}}">
-                    Site News
+                <a class="navbar-brand" href="{{url('/adminnews')}}">
+                    Check News
 
                 </a>
-                @auth
-                @if (Auth::user()->is_admin)
                 
-                <a class="navbar-brand" href="{{url('/admins')}}">
-                    Admin view
+                <a class="navbar-brand" href="{{route('news.create')}}">
+                    New Site News
 
                 </a>
-                @endif
-                @endauth
+                <a class="navbar-brand" href="{{route('index')}}">
+                    Exit admin view
+
+                </a>
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                @endif
+                @endauth
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">

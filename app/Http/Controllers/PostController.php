@@ -82,10 +82,17 @@ class PostController extends Controller
             $post=Post::findOrFail($id);
             $likes=Like::where('post_id', '=',$post->id)->delete();
             $post->delete();
-            return redirect()->route('index')->with('status','Post deleted');
+            return redirect()->route('Adminindex')->with('status','Post deleted');
         } 
         
         return abort(403,"Only admins may delete Posts");
+    }
+
+
+    public function Adminindex(){
+
+        $posts= Post::orderBy('created_at','desc')->get();
+        return view('admin.index', compact('posts'));
     }
 
 

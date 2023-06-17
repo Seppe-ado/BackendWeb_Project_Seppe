@@ -16,7 +16,7 @@ class NewsLikesController extends Controller
         
         $Newslike =NewsLike:: where('news_id', "=", $newsid)->where ('user_id',"=",Auth::user()->id)->first();
         if ($Newslike != NULL){
-            abort(403, 'Already liked this post');
+            abort(403, 'Already liked this news');
         }    
 
         $Newslike = new NewsLike;
