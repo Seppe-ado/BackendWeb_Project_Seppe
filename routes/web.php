@@ -6,6 +6,8 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NewsLikesController;
+use App\Http\Controllers\CommentsController;
+
 
 
 /*
@@ -24,15 +26,22 @@ Route::get('/', [PostController::class,'index'])->name('index');
 Route::resource('posts', PostController::class);
 Route::resource('news', NewsController::class);
 Route::resource('users', UserController::class);
+Route::resource('comments', CommentsController::class);
+
 
 
 Route::get('like/{postid}', [LikeController::class, 'like'])->name('like');
 Route::get('Newslike/{postid}', [NewsLikesController::class, 'Newslike'])->name('Newslike');
 
 
+
 Route::get('user/{name}', [UserController::class,'user'])->name('user');
 Route::get('admins', [UserController::class,'admins'])->name('admins');
 Route::put('addadmins', [UserController::class,'addadmins'])->name('addadmins');
+Route::get('profile', [UserController::class,'profile'])->name('profile');
+
+Route::get('create/{postid}', [CommentsController::class,'createid'])->name('createid');
+
 
 
 Route::get('/news', [NewsController::class,'Newsindex'])->name('Newsindex');

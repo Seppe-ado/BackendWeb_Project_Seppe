@@ -10,6 +10,21 @@
                 <div class="card-body">
                     
 
+                   <h2> User information </h2>
+                   <hr><hr>
+                    <p>Name: {{$user->name}}</p>
+                    <p>Birthday: {{$user->birthday}}</p>
+                    <p>Join date: {{$user->created_at->format('d/m/Y')}}</p>
+                    <p>About me: {{$user->aboutMe}}</p>
+
+                    @if ($user->id==Auth::user()->id)
+                         <a href="{{route('users.edit',$user)}}">Edit Info </a>
+                        @endif  
+
+                </div>
+                <div class="card-body">
+                    
+
                    <h2> Created posts </h2>
                    <hr><hr>
 

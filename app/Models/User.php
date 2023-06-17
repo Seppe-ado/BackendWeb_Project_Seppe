@@ -55,4 +55,7 @@ class User extends Authenticatable
     public function newslikes(){
         return $this->hasmany('App\Models\NewsLike');
     }
+    public function comments(){
+        return $this->hasmany('App\Models\Comments');
+    }
 }

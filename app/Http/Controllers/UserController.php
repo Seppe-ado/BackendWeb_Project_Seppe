@@ -33,6 +33,48 @@ class UserController extends Controller
             return abort(403,"Only admins may add admins");
         }
     }
+    public function profile (){
+        $user= Auth::user();
+        return view('users.profile', compact('user'));
+    }
+
+    public function edit($id){
+        $user= User::findorFail($id);
+
+        if ($user->id != Auth::user()->id) {
+            abort(403);
+         }
+ 
+         return view('users.edit', compact('user'));
+        
+    }
+
+    public function update($id, Request $request){
+        $user= User::findorFail($id);
+
+        
+
+        if ($user->id != Auth::user()->id) {
+           abort(403);
+        }
+        $validated=$request-> validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'aboutMe' => 'required|min:5',
+            'birthday' => 'required|date'
+        ]);
+
+        $user->name = $validated['name'];
+        $user->aboutMe = $validated['aboutMe'];
+        $user->email = $validated['email'];
+        $user->birthday=$validated['birthday'];
+        $user->save();
+
+
+        return redirect()->route('profile')->with('status','Information edited');
+    }
+
+   
     
    
 }

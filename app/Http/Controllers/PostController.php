@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Like;
+use App\Models\Comments;
 use Auth;
 
 class PostController extends Controller
@@ -74,7 +75,8 @@ class PostController extends Controller
 
     public function show($id){
         $post=Post::findOrFail($id);
-        return view('posts.show', compact('post'));
+        $comments=Comments::orderBy('created_at','desc')->where('post_id',"=",$post->id)->get();
+        return view('posts.show', compact('post','comments'));
     }
 
     public function destroy($id){
