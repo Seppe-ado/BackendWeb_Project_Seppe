@@ -23,6 +23,9 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Base location sharing
                 </a>
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    Posts
+                </a>
 
                 @auth 
                 <a class="navbar-brand" href="{{route('posts.create')}}">
@@ -42,7 +45,15 @@
                 </a>
                 @endif
                 @endauth
+                <a class="navbar-brand" href="{{route('FAQ.index')}}">
+                    FAQ
+
+                </a>
                 @auth 
+                <a class="navbar-brand" href="{{route('Requests.create')}}">
+                    Contact
+
+                </a>
                 <a class="navbar-brand" href="{{route('profile')}}">
                     Profile
 

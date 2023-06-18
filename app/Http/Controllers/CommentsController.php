@@ -62,7 +62,7 @@ class CommentsController extends Controller
 
         $comments->save();
 
-        return redirect()->route('index')->with('status','Comment added');
+        return redirect()->route('posts.show',$comments->post_id)->with('status','Comment added');
     }
 
 }

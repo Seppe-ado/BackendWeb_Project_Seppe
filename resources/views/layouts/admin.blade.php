@@ -40,6 +40,14 @@
                     New Site News
 
                 </a>
+                <a class="navbar-brand" href="{{route('FAQ.adminview')}}">
+                    FAQ's
+
+                </a>
+                <a class="navbar-brand" href="{{route('Requests.index')}}">
+                    Requests
+
+                </a>
                 <a class="navbar-brand" href="{{route('index')}}">
                     Exit admin view
 

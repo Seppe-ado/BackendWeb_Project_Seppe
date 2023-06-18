@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\NewsLike;
+use App\Models\NewsComments;
 use Auth;
 
 class NewsController extends Controller
@@ -46,7 +47,8 @@ class NewsController extends Controller
 
     public function show($id){
         $news=News::findOrFail($id);
-        return view('news.Newsshow', compact('news'));
+        $Newscomments=NewsComments::orderBy('created_at','desc')->where('news_id',"=",$news->id)->get();
+        return view('news.Newsshow', compact('news','Newscomments'));
     }
     public function edit($id){
         $news= News::findorFail($id);

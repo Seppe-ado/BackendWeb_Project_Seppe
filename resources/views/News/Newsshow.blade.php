@@ -23,7 +23,26 @@
                         <br>
                         @endauth
                         Post has {{ $news->news_likes()->count() }} like(s)
+                        <br>
+                        @auth
+                         <a href="{{route('createidnews',$news->id)}}">Add Comment </a>
+                     
+                        @endauth
                         
+                        <hr>
+
+                        <h1>Comments:</h1> 
+                        @foreach($Newscomments as $comment)
+                        
+                        <p>{{$comment->text}}</p>
+                        <p>Posted by <a href="">{{$comment->user->name}} </a>at {{$comment->created_at->format('d/m/Y \a\t H:m')}} </p>
+                        @auth
+                        @if ($news->user_id==Auth::user()->id)
+                         <a href="{{route('Newscomments.edit',$comment->id)}}">Edit Comment </a>
+                        @endif  
+                        @endauth
+                        <hr>
+                        @endforeach
 
                 </div>
             </div>

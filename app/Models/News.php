@@ -15,4 +15,7 @@ class News extends Model
     public function news_likes(){
         return $this->hasMany('App\models\NewsLike');
     }
+    public function comments(){
+        return $this->hasMany('App\models\NewsComments');
+    }
 }
