@@ -83,6 +83,7 @@ class PostController extends Controller
         if (Auth::user()->is_admin){
             $post=Post::findOrFail($id);
             $likes=Like::where('post_id', '=',$post->id)->delete();
+            $comments=Comments::where('post_id', '=',$post->id)->delete();
             $post->delete();
             return redirect()->route('Adminindex')->with('status','Post deleted');
         } 

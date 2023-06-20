@@ -28,7 +28,7 @@
                         <form method="post" action="{{route('news.destroy', $newss->id)}}" >
                             @csrf
                             @method('DELETE')
-                            <input type="submit" value="DELETE POST" style= "background-color: red;" onclick="return confirm('Are you sure you want to delete?')">
+                            <input type="submit" value="DELETE NEWS" style= "background-color: red;" onclick="return confirm('Are you sure you want to delete?')">
                         </form>
                     @endif
                     @endauth

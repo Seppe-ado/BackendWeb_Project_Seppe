@@ -63,6 +63,7 @@ class NewsController extends Controller
         if (Auth::user()->is_admin){
             $news=News::findOrFail($id);
             $newslikes=NewsLike::where('news_id', '=',$news->id)->delete();
+            $Newscomments=NewsComments::where('news_id', '=',$news->id)->delete();
             $news->delete();
             return redirect()->route('adminnews')->with('status','News deleted');
         } 

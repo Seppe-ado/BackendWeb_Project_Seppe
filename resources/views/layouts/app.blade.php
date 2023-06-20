@@ -36,15 +36,7 @@
                     Site News
 
                 </a>
-                @auth
-                @if (Auth::user()->is_admin)
                 
-                <a class="navbar-brand" href="{{url('/admins')}}">
-                    Admin view
-
-                </a>
-                @endif
-                @endauth
                 <a class="navbar-brand" href="{{route('FAQ.index')}}">
                     FAQ
 
@@ -57,7 +49,19 @@
                 <a class="navbar-brand" href="{{route('profile')}}">
                     Profile
 
-                </a>@endauth
+                </a>
+                <a class="navbar-brand" href="{{route('about')}}">
+                    About
+
+                </a>
+                @if (Auth::user()->is_admin)
+                
+                <a class="navbar-brand" href="{{url('/admins')}}">
+                    Admin view
+
+                </a>
+                @endif
+                @endauth
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

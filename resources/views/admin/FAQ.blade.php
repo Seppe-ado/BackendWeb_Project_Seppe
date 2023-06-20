@@ -24,7 +24,7 @@
                         <form method="post" action="{{route('FAQ.destroy', $FAQs->id)}}" >
                             @csrf   
                             @method('DELETE')
-                            <input type="submit" value="DELETE POST" style= "background-color: red;" onclick="return confirm('Are you sure you want to delete?')">
+                            <input type="submit" value="DELETE FAQ" style= "background-color: red;" onclick="return confirm('Are you sure you want to delete?')">
                         </form>
                     @endif
                     <hr><hr>
